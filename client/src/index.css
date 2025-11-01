@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root{
+background-color: #e4e4e7;
+    font-family: "Inter",sans-serif;
+}
