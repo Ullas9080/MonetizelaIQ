@@ -1,45 +1,70 @@
 import { MdDashboard } from "react-icons/md";
 import { FaHistory } from "react-icons/fa";
 import { CiSettings } from "react-icons/ci";
+import { IoMdHome } from "react-icons/io";
 import { Link, useLocation } from "react-router-dom";
+import { icons } from "lucide-react";
 
 const Menu = () => {
   const location = useLocation();
 
   const menuItems = [
+    {icon:<IoMdHome/>,label:"Home",link:"/"},
     { icon: <MdDashboard />, label: "Dashboard", link: "/DashBoard" },
     { icon: <FaHistory />, label: "History", link: "/History" },
     { icon: <CiSettings />, label: "Settings", link: "/Settings" },
   ];
 
   return (
-    <div className="fixed left-0 top-0 h-screen w-64 flex flex-col items-center bg-gray-100 border-r border-gray-300 z-30">
-      <div className="mt-10 flex items-center gap-3 overflow-hidden">
-        <img src="/src/assets/m.svg" alt="User logo" className="w-12 h-12" />
-        <h1 className="text-2xl max-w-[120px] font-semibold text-transparent truncate bg-clip-text bg-gradient-to-r from-violet-700 to-fuchsia-500">
+    <div
+      className="fixed left-0 top-0 h-screen text-white
+                 w-50 lg:w-64 flex flex-col items-center 
+                 bg-gradient-to-bl from-indigo-600 via-purple-600 to-fuchsia-600
+                 shadow-lg shadow-fuchsia-800/20 border-r border-white/10 z-30"
+    >
+      {/* Logo */}
+      <div className="lg:mt-10 mt-6 flex items-center gap-3">
+        <img src="/src/assets/m.svg" alt="User logo" className="w-8 lg:w-10" />
+        <h1 className="text-lg lg:text-xl font-semibold text-white tracking-wide">
           Ullas
         </h1>
       </div>
 
-      <aside className="flex flex-col mt-8 w-full space-y-4 items-center">
+      {/* Menu Items */}
+      <aside className="flex flex-col mt-6 lg:mt-10 w-full lg:space-y-3 space-y-1  justify-center ">
         {menuItems.map((item, i) => {
-          
-            const isActive = location.pathname.toLowerCase() == item.link.toLowerCase();
-          
+          const isActive =
+            location.pathname.toLowerCase() === item.link.toLowerCase();
           return (
-            <Link key={i}
-              to={item.link} className={`flex items-center gap-3 w-48 px-4 py-2 rounded-lg text-lg font-medium transition-all duration-300
+            <Link
+              key={i}
+              to={item.link}
+              className={`ml-3 flex text-sm lg:text-lg items-center gap-3 w-[80%] lg:w-[85%] justify-start lg:px-5 lg:py-3
+                px-3 py-2
+                font-medium 
+                rounded-2xl border transition-all duration-300
                 ${
                   isActive
-                    ? "bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white shadow-md scale-105"
-                    : "text-gray-700 hover:text-violet-600 hover:scale-105"
-                }`}>{item.icon} {item.label}
+                    ? "bg-white text-violet-700 border-violet-400 shadow-md scale-105"
+                    : "text-white border-transparent hover:bg-violet-100 hover:text-violet-700 hover:border-violet-400"
+                }`}
+            >
+              {item.icon}
+              <span>{item.label}</span>
             </Link>
           );
         })}
       </aside>
-      <div className="mt-auto mb-2">
-        <button className="py-3 px-6 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white font-semibold shadow-md hover:shadow-lg hover:scale-105">
+
+      {/* Logout Button */}
+      <div className="mt-auto mb-6 w-full flex justify-center">
+        <button
+          className="w-[85%] py-3 rounded-2xl border border-violet-400/40 
+                     bg-white/10 text-white font-semibold text-base
+                     hover:bg-violet-100 hover:text-violet-700 hover:border-violet-400
+                     hover:shadow-lg hover:shadow-violet-200/40 hover:scale-105 
+                     transition-all duration-300"
+        >
           Logout
         </button>
       </div>

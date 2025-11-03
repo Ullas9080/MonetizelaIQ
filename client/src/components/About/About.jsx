@@ -41,12 +41,12 @@ const About = () => {
           >
             <div className="relative z-10">
               <h2
-                className={`text-2xl font-bold mb-4 ${card.accent} group-hover:text-white`}
+                className={`md:text-xl lg:text-2xl font-bold mb-4 ${card.accent} group-hover:text-white`}
               >
                 {card.title}
               </h2>
 
-              <ul className="space-y-2 text-[15px] font-medium leading-relaxed">
+              <ul className="space-y-2 lg:text-[15px] md:text-[12px] text-sm font-medium leading-relaxed">
                 {card.points.map((p, i) => (
                   <li
                     key={i}

@@ -15,7 +15,7 @@ const App = () => {
         
       </aside>
    
-      <main className="md:ml-64 flex-1 ">
+      <main className="md:ml-50 lg:ml-64 flex-1 ">
      <AppRouters/>
       </main>
    
